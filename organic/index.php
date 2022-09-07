@@ -149,14 +149,14 @@
  -->
                     <div>
                         
-                        <img class="pull-left" src="/inventoryphp/organic/upload/dep.jpg" class="img-rounded" alt="Cinque Terre" width="175" height="150" style="align:right; padding-left: 12px; margin-bottom: 170px; overflow: hidden;">               
+                        <img class="pull-left" src="/inventoryphp/organic/upload/dep.jpg" class="img-rounded" alt="Cinque Terre" width="175" height="150" style="align:right; padding-left: 12px; margin-bottom: 100px; overflow: hidden;">               
                             <div class="col-xs-10">
                                 <h4 class="card-title"><b><u>DEPARTMENT OF CHEMISTRY</u></b></h4>
                                 <p class="card-text text-justify" style="font-size: 17px">Dear learned visitor, WaDescription: <a href="https://www.saurashtrauniversity.edu/university/academic-departments/department-of-chemistry">DEPARTMENT-OF-CHEMISTRY</a>. H S Joshi-2.jpgrm Greetings from the Department of chemistry, Saurashtra University Rajkot. Ours is one of the department established in 1979 on the main campus. It started as a single faculty department in the subject of chemistry to the students mainly coming from the rural background and impart necessary skills required for the grooming chemical industries in this western part of the country, for creating self-entrepreneurs and also churn out academicians and researchers who can take up jobs in educational institutes and research laboratories. With a small beginning, the path for progress and development was smooth and gradual.</p>
                             </div>
                         </div></div>
                     <div class="text-center p-5" style="background-color: rgba(0, 0, 0, 0.2);">
-                            <b>Copyright ©<?php echo $date = date("Y"); ?> -present Department of Computer Science(MCA), Inc. All rights reserved.
+                            <b>Copyright ©<?php echo $date = date("Y"); ?> -Rohan Ajudiya,Dhaval Vasani,Partha Maheta,Vishal Faldu,Nehal Knkotiya.
                             </b>
                         </div>
                     </div>

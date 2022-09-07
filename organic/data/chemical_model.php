@@ -18,25 +18,55 @@
         
         function addchemical(){
             include('db1.php');
-            $name = $_POST['name'];
+            $name = $_POST['chemicalname'];
             $company = $_POST['company'];
             $description = $_POST['description'];
             $qty = $_POST['qty'];
             $unitsign = $_POST['unitsign'];
             $unit = $_POST['unit'];
+            $price = $_POST['price'];
             $supplier = $_POST['supplier'];
-            $date = date('m/d/Y H:i');
+            $date = date('y/m/d h:i A');
             $createdBy = $_SESSION['fullname'];
-            $q = "insert into chemicals values(null,'$name','$company','$description','$qty','$unitsign','$unit','$supplier','$date','','$createdBy','')";
-            mysqli_query($conn,$q);
-            $op = "added $qty chemical ($name)";
-            $this->logs($op);
-            header("Location:../success.php?cat=chemical&&msg=added");
+
+            $totalqty = $qty * $unit;
+            $totapriceofqty =  $unit * $price;
+            
+          /*  $q = mysqli_query($conn,"SELECT av_qty FROM chemicals WHERE name='$name'");
+            $result = mysqli_fetch_assoc($q);
+            if ($result === $qty) 
+            {*/
+                $select = mysqli_query($conn, "SELECT name from chemicals where name = '$name'");
+                if(mysqli_num_rows($select) == 1) 
+                {
+                    $q2 = mysqli_query($conn,"SELECT qty FROM chemicals WHERE name='$name'");
+                    $q3 = mysqli_query($conn,"SELECT price FROM chemicals WHERE name='$name'");
+                    $q4 = mysqli_query($conn,"SELECT unit FROM chemicals WHERE name='$name'");
+                    $main = mysqli_fetch_assoc($q2);
+                    $main1 = mysqli_fetch_assoc($q3);
+                    $main2 = mysqli_fetch_assoc($q4);
+                    $e = implode("",$main);
+                    $e1 = implode("",$main1);
+                    $e2 = implode("",$main2);
+                    $fainalqty = $e + $qty;
+                    $fainalprice = $e1 + $totapriceofqty;
+                    $fainalunit = $e2 + $unit;
+                    $updatedate = date('y/m/d h:i A');
+                    mysqli_query($conn,"UPDATE chemicals SET qty='$fainalqty',unit='$fainalunit',price='$fainalprice',dateUpdated='$updatedate' WHERE name='$name'"); 
+                    header('Location:/inventoryphp/organic/chemicals.php');
+                } else 
+                {
+                $a = $price;
+                $price = $unit * $a;
+                mysqli_query($conn,"INSERT INTO chemicals VALUES(null,'$name','$company','$description','$qty','$totalqty','$unitsign','$unit','$totapriceofqty','$supplier','$date','','$createdBy')");
+                header('Location:/inventoryphp/organic/chemicals.php');
+            }
+            
         }
         
         function updatechemical(){
             include('db1.php');
-            $name = $_POST['name'];
+            $name = $_POST['chemicalname'];
             $description = $_POST['description'];
             $qty = $_POST['qty'];
             $unitsign=$_POST['unitsign'];
@@ -47,7 +77,6 @@
             $id = $_GET['id'];
 
             $q = "UPDATE chemicals set name='$name', description='$description', qty='$qty',unitsign='$unitsign',unit='$unit', supplier='$supplier', dateUpdated='$date', updatedBy='$updatedBy' where id=$id";
-
             mysqli_query($conn,$q);
             $op = "updated $qty chemicals ($name)";
             $this->logs($op);
@@ -57,7 +86,7 @@
         function togive(){
             include('db1.php');
             $studentsname = $_POST['name'];
-            $chemical = $_POST['chemical'];
+            $chemical = $_POST['chemicalname'];
             $faculty = $_POST['faculty'];
             $description = $_POST['description'];
             $qty = $_POST['qty'];
@@ -68,10 +97,17 @@
             mysqli_query($conn,$q);
             $op = "added $qty chemical ($name)";
             $this->logs($op);
+
+           $q2 = "SELECT qty FROM chemicals WHERE name='$chemical'";
+            $result = mysqli_query($conn,$q2);
+            $main = mysqli_fetch_assoc($result);
+            $e = implode("", $main);
+            $fainal = $e - $qty;
+            mysqli_query($conn,"UPDATE chemicals SET qty='$fainal' WHERE name='$chemical'");
             header("Location:/inventoryphp/organic/chemicals.php");
         }
         function getchemicals(){   
-        $conn = mysqli_connect("localhost","dev","dev14","cinventory") or die("please connect with the database");         
+        include('db1.php');         
            $q = "SELECT * from chemicals order by name asc ";
             $result = mysqli_query($conn,$q);
             return $result;
@@ -98,34 +134,35 @@
             $result = mysqli_query($conn,$q);
             
             if(mysqli_num_rows($result)==0):
-                echo '<tr><td class="text-danger text-center" colspan="4"><strong>*** EMPTY ***</strong></td></tr>';
+                echo '<tr><td class="text-danger text-center" colspan="6"><strong>*** EMPTY ***</strong></td></tr>';
             endif;
             
             while($row = mysqli_fetch_array($result)):
             echo '
                 <tr>
                     <td>
-                        <a href="editchemical.php?id='.$row['id'].'">'.$row['name'].'
-                        </a>
+                        <p>'.$row['name'].'
+                        </p>
                     </td>
                     <td readonly>
-                        <a>'.$row['company'].'
-                        </a>
+                        <p>'.round($row['qty'] / $row['av_qty']).'
+                        </p>
                     </td>
                     <td>
-                        <a>'.$row['supplier'].'
-                        </a>
+                        <p>'.$row['qty'].' '.$row['unitsign'].'
+                        </p>
                     </td>
                     <td>
-                        <a>'.$row['qty'].'
-                         </a>
+                        <p>'.$row['price'].'₹'.'
+                         </p>
                     </td>
                     <td>
-                        <a>'.$row['dateIn'].'
-                        </a>
+                        <p>'.$row['supplier'].'
+                        </p>
                     </td>
                     <td>
-                        <span class="input-group-addon alert-danger"><a href="#to_give" data-toggle="modal" target = "_blank">To Give</a></span>
+                        <p>'.$row['company'].'
+                        </p>
                     </td>
                 </tr>
             ';

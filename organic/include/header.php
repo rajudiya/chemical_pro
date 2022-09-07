@@ -3,7 +3,8 @@
     $base_url = "http://localhost/inventoryphp/organic/";
     if(!isset($_SESSION['login'])){
         header("Location:login.php");
-    }        
+    }       
+     
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -18,14 +18,17 @@
                         <img src="/inventoryphp/organic/upload/logo.png" height="90" align="left" >
                         <h1 class="page-header">Chemicals</h1>
                         <div class="input-group">
-                            <span class="input-group-addon alert-danger"><a href="#addchemical_modal" data-toggle="modal">Add New</a></span>
+                            <span class="input-group-addon alert-danger">
+                                <a href="#addchemical_modal" data-toggle="modal">Add New</a></span>
                             <input type="text" class="form-control" id="searchchemical" placeholder="search chemical...">
+                            <span class="input-group-addon alert-danger"><a href="#update_qty" data-toggle="modal">To Give</a></span>
                         </div>
                         <br />
                         
                         <ol class="breadcrumb">
-                            <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                            <li class="active">Chemicals</li>
+                            <li>
+                                <a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a>
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -46,13 +49,12 @@
                                 <thead>
                                     <tr>
                                         <th>Chemical Name</th>
-                                        <th>Company Name</th>
-                                        <th>Supplier</th>
-                                        <!-- <th>Total Qty</th> -->
-                                        <th>Remaining Qty</th>
-                                        <!-- <th>Units</th> -->
-                                        <th>Issue Date</th>
-                                        <th>To Give</th>                                        
+                                       <!--  <th>Average <br> Quantity</th> -->
+                                        <th>Total Qty</th>
+                                        <th>Capacity<br>ml/gm</th>
+                                        <th>Price <br> ₹</th>
+                                        <th>Name Of The<br>Distributer</th>
+                                        <th>Company Name</th>                   
                                     </tr>
                                 </thead>
                                 <tbody class="table-chemical">
@@ -63,39 +65,44 @@
                                         <?php while($row = mysqli_fetch_array($chemical)): ?>
                                             <tr>
                                                 <td>
-                                                    <a href="editchemical.php?id=<?php echo $row['id'];?>"><?php echo $row['name'];?>  
-                                                    </a>
+                                                    <!-- <a href="editchemical.php?id=<?php //echo $row['id'];?>"><?php //echo $row['name'];?>  
+                                                    </a> -->
+
+                                                    <div readonly>
+                                                        <?php echo $row['name']?>
+                                                    </div>
+                                                </td>
+                                                <!-- <td class="text-left">
+                                                    <div readonly>
+                                                        <?php //echo $row['av_qty'].' '.$row['unitsign'];?>
+                                                    </div>
+                                                </td> -->
+                                                <td class="text-center">
+                                                    <div readonly>
+                                                        <?php echo bcdiv($row['qty'],$row['av_qty']);?>
+                                                    </div>
+                                                </td>
+
+                                                 <td class="text-left">
+                                                    <div readonly>
+                                                        <?php echo $row['qty'].' '.$row['unitsign'];?>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">
+                                                    <div readonly>
+                                                        <?php echo $row['price'].'₹';?>
+                                                    </div>
                                                 </td>
                                                  <td class="text-left">
                                                     <div readonly>
-                                                        <?php echo $row['company'];?>
-                                                    </div>
-                                                </td>
-                                                <td class="text-left">
-                                                    <div readonly>
                                                         <?php echo $row['supplier'];?>
-                                                    </div>
-                                                </td>
-                                                <td class="text-left">
-                                                    <div readonly>
-                                                        <?php echo $row['qty']." ".$row['unitsign'];?>
-                                                    </div>
-                                                </td>
-                                                <!-- <td></td> -->
-                                                <td class="text-left">
-                                                    <div readonly>
-                                                        <?php echo $row['unit'];?>
                                                     </div>
                                                 </td> 
                                                 <td class="text-left">
                                                     <div readonly>
-                                                        <?php echo $row['dateIn'];?>
+                                                        <?php echo $row['company'];?>
                                                     </div>
-                                                </td>
-                                                <td>
-
-                                                    <span class="input-group-addon alert-danger"><a href="#to_give" data-toggle="modal" target = "_blank">To Give</a></span>
-                                                </td>                                             
+                                                </td>                                              
                                                 
                                             </tr>
                                         <?php endwhile; ?>
