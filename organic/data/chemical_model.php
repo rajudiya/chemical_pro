@@ -130,7 +130,7 @@
             include('db1.php');
             
             $search = $_POST['search'];
-            $q = "SELECT * FROM chemicals where name like '%$search%'";
+            $q = "SELECT * FROM chemicals where name like '%$search%' or price like '%$search%' or company like '%$search%' or unitsign like '%$search%' or supplier like '%$search%' or unit like '%$search%' or qty like '%$search%' ";
             $result = mysqli_query($conn,$q);
             
             if(mysqli_num_rows($result)==0):

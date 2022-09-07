@@ -85,6 +85,45 @@
     </div>
 </div>
 
+<!-- suppliers -->
+<div class="modal fade" id="addsupplier_modal" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa fa-truck"></i> Add Suppliers</h3>
+            </div>            
+            <form action="data/supplier_model.php?p=addsupplier" method="POST">
+            <div class="modal-body">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Supplier Name</span>
+                    <input type="text" autofocus name="name" class="form-control" required/>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Company</span>
+                    <input type="text" name="company" class="form-control"/>
+                </div>      
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Contact No.</span>
+                    <input type="text" name="contact" class="form-control" required/>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Email Address</span>
+                    <input type="text" name="email" class="form-control"/>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">Address</span>
+                    <input type="text" name="address" class="form-control" required/>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" data-dismiss="modal">Cancel</a>
+                <input type="submit" value="Save" class="btn btn-success">                
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!--to_give -->
 <div class="modal fade" id="update_qty" role="dialog">
     <div class="modal-dialog modal-md">
@@ -135,46 +174,6 @@
         </div>
     </div>
 </div>
-
-<!-- suppliers -->
-<div class="modal fade" id="addsupplier_modal" role="dialog">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fa fa-truck"></i> Add Suppliers</h3>
-            </div>            
-            <form action="data/supplier_model.php?p=addsupplier" method="POST">
-            <div class="modal-body">
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Supplier Name</span>
-                    <input type="text" autofocus name="name" class="form-control" required/>
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Company</span>
-                    <input type="text" name="company" class="form-control"/>
-                </div>      
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Contact No.</span>
-                    <input type="text" name="contact" class="form-control" required/>
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Email Address</span>
-                    <input type="text" name="email" class="form-control"/>
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon">Address</span>
-                    <input type="text" name="address" class="form-control" required/>
-                </div>                
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-primary" data-dismiss="modal">Cancel</a>
-                <input type="submit" value="Save" class="btn btn-success">                
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 <!--modal item -->
 
