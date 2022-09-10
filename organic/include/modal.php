@@ -34,6 +34,15 @@
                         <?php endwhile; ?>
                     </datalist>
                 </div>
+                <div class="form-group input-group">
+                    <label class="input-group-addon required">FacultyName</label>
+                    <input type="text" autofocus list="facultyname" name="facultyname" class="form-control" />
+                    <datalist id="facultyname" >
+                        <?php while($rows = mysqli_fetch_array($faculty)): ?>
+                        <option><?php echo $rows['facultyname'];?></option>
+                        <?php endwhile; ?>
+                    </datalist>
+                </div>
                 <div class="form-group">
                     <label class="input-group-addon required">Description</label><br>
                     <textarea rows="4" cols="67" maxlength="284" placeholder="Maximum Character only 250" name="description"></textarea>
@@ -51,14 +60,6 @@
                 <div class="form-group input-group">
                     <span class="input-group-addon required">Total Number of Bottle</span>
                     <input type="number" min="0" name="unit" value="1" class="form-control"/>
-                    <!-- <span class="input-group-addon">Total ml of Bottals</span>
-                    <input type="number" autofocus name="no_of_bottal" class="form-control" required/>
-                    <span class="input-group-addon">
-                        <select name="ml_grm">
-                            <option value="ML">ML</option>
-                            <option value="Gram">Gram</option>
-                        </select>
-                    </span> -->
                 </div>
 
                 <div class="form-group input-group">
@@ -68,7 +69,7 @@
 
                 <div class="form-group input-group">
                     <span class="input-group-addon required">Supplier</span>
-                    <input type="text" autofocus list="supplier" name="supplier" class="form-control" />
+                    <input type="text" autofocus list="supplier" name="supplier" class="form-control"/>
                     <datalist id="supplier" >
                         <?php while($rows = mysqli_fetch_array($getsupplier)): ?>
                         <option><?php echo $rows['name'];?></option>
@@ -148,8 +149,13 @@
                     </datalist>
                 </div>
                 <div class="form-group input-group">
-                    <span class="input-group-addon required">faculty Name</span>
-                    <input type="text" autofocus name="faculty" class="form-control" required/>
+                    <label class="input-group-addon required">FacultyName</label>
+                    <input type="text" autofocus list="facultyname" name="facultyname" class="form-control" />
+                    <datalist id="facultyname" >
+                        <?php while($rows = mysqli_fetch_array($faculty)): ?>
+                        <option><?php echo $rows['facultyname'];?></option>
+                        <?php endwhile; ?>
+                    </datalist>
                 </div>
                 <div class="form-group">
                     <label class="input-group-addon">Description:</label><br>

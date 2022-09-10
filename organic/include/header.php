@@ -24,6 +24,19 @@
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="css/mystyle.css" rel="stylesheet">
     <link href="css/jquery-ui.css" rel="stylesheet">
+    <style type="text/css">
+        .rotate {
+          animation: rotation 10s infinite linear;
+        }
+        @keyframes rotation {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(359deg);
+          }
+        }
+    </style>
 
     <!-- Morris Charts CSS -->
     <link href="css/plugins/morris.css" rel="stylesheet">
@@ -45,7 +58,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- <img src="/inventoryphp/organic/upload/logo.png" height="50" align="left" > -->
                 <a class="navbar-brand" href="index.php">Organic Lab</a>
             </div>
             <style>

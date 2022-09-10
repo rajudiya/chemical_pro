@@ -6,7 +6,7 @@
     //$getsupplier2 = mysqli_query($con,$q);
     $getcamicalname = mysqli_query($conn,$camicalname);
     $getcompany = mysqli_query($conn,"SELECT company FROM chemicals");
-    //$getunitsign=mysqli_query($conn,"SELECT unitsign FROM chemicals WHERE name=$name")
+    $faculty=mysqli_query($conn,"SELECT facultyname FROM chemicals");
 
     //$query = mysqli_query($conn,"SELECT supplier,name,company FROM chemicals");
     

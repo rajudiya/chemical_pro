@@ -18,7 +18,31 @@
         
         function addchemical(){
             include('db1.php');
+            $chemicalname = $_POST['chemicalname'];
+            $facultyname = $_POST['facultyname'];
+            $suppliername = $_POST['supplier'];
+            $companyname = $_POST['company'];
+            $unitsign = $_POST['unitsign'];
+            $av_qty = $_POST['qty'].$unitsign;
+            $units = $_POST['unit'].$unitsign;
+            $total_qty = $av_qty * $units;
+            $total_qty.=$unitsign;
+            $av_price = $_POST['price'];
+            $total_price =$av_price * $units;
+            $createdate = date('y/m/d h:i');
+            $all = mysqli_query($conn,"SELECT * FROM report WHERE chemicalname='$chemicalname'");
+            if (mysqli_num_rows($all) >= 1) {
+               $all_qty = mysqli_query($conn,"SELECT total_qty FROM report WHERE chemicalname='$chemicalname'");
+               while($r = mysqli_fetch_array($all_qty)):
+                        $new_total_qty = $total_qty + $r['total_qty'];
+                        $new_total_qty.$unitsign;
+                   echo mysqli_query($conn,"UPDATE report SET chemicalname='$chemicalname',facultyname='$facultyname',suppliername='$suppliername',companyname='$companyname',av_qty='$av_qty',total_qty='$new_total_qty',units='$units',unitsign='$unitsign',av_price='$av_price',total_price='$total_price',date='$createdate'");
+                    endwhile;
+                }else{
+            mysqli_query($conn,"INSERT INTO report VALUES (null,'$chemicalname',null,null,null,'$facultyname','$suppliername','$companyname','$av_qty','$total_qty','$units','$unitsign','$av_price','$total_price','$createdate')") ;
+            }
             $name = $_POST['chemicalname'];
+            $facultyname = $_POST['facultyname'];
             $company = $_POST['company'];
             $description = $_POST['description'];
             $qty = $_POST['qty'];
@@ -31,11 +55,10 @@
 
             $totalqty = $qty * $unit;
             $totapriceofqty =  $unit * $price;
-            
-          /*  $q = mysqli_query($conn,"SELECT av_qty FROM chemicals WHERE name='$name'");
-            $result = mysqli_fetch_assoc($q);
-            if ($result === $qty) 
-            {*/
+           $q = mysqli_query($conn,"SELECT av_qty FROM chemicals WHERE name='$name' and av_qty='$qty'");
+            $rowCheck=mysqli_num_rows($q);
+            if ($rowCheck >= 1) 
+            {
                 $select = mysqli_query($conn, "SELECT name from chemicals where name = '$name'");
                 if(mysqli_num_rows($select) == 1) 
                 {
@@ -54,13 +77,13 @@
                     $updatedate = date('y/m/d h:i A');
                     mysqli_query($conn,"UPDATE chemicals SET qty='$fainalqty',unit='$fainalunit',price='$fainalprice',dateUpdated='$updatedate' WHERE name='$name'"); 
                     header('Location:/inventoryphp/organic/chemicals.php');
-                } else 
-                {
+                } 
+                }else {
                 $a = $price;
                 $price = $unit * $a;
-                mysqli_query($conn,"INSERT INTO chemicals VALUES(null,'$name','$company','$description','$qty','$totalqty','$unitsign','$unit','$totapriceofqty','$supplier','$date','','$createdBy')");
+                mysqli_query($conn,"INSERT INTO chemicals VALUES(null,'$name','$company','$facultyname','$description','$qty','$totalqty','$unitsign','$unit','$totapriceofqty','$supplier','$date','','$createdBy')");
                 header('Location:/inventoryphp/organic/chemicals.php');
-            }
+                 }
             
         }
         
@@ -100,11 +123,14 @@
 
            $q2 = "SELECT qty FROM chemicals WHERE name='$chemical'";
             $result = mysqli_query($conn,$q2);
-            $main = mysqli_fetch_assoc($result);
-            $e = implode("", $main);
-            $fainal = $e - $qty;
-            mysqli_query($conn,"UPDATE chemicals SET qty='$fainal' WHERE name='$chemical'");
-            header("Location:/inventoryphp/organic/chemicals.php");
+            if ($result->num_rows == 1) {
+                while($main = mysqli_fetch_assoc($result)):
+                $e = implode("", $main);
+                $fainal = $e - $qty;
+                mysqli_query($conn,"UPDATE chemicals SET qty='$fainal' WHERE name='$chemical'");
+                header("Location:/inventoryphp/organic/chemicals.php");
+            endwhile;
+            }
         }
         function getchemicals(){   
         include('db1.php');         

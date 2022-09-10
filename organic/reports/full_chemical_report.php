@@ -1,5 +1,4 @@
 <?php
-
     $q = "SELECT * FROM chemicals WHERE (dateIn BETWEEN '$datefrom' AND '$dateto') order by dateIn desc";
     
     $result = mysqli_query($con,$q) or die('unable to query');
@@ -20,6 +19,19 @@
             window.print();
        }
 </script> 
+<style type="text/css">
+.rotate {
+  animation: rotation 10s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+</style>
 <div>
     <img src="/inventoryphp/organic/upload/logo.png" height="90">
 </div>
@@ -38,7 +50,6 @@
             <th class="text-center">Stock In</th>
             <th class="text-center">Created By</th>
             <th class="text-center">Stock Updated</th>
-            <th class="text-center">Updated By</th>
         </tr>
     </thead>
     <tbody>
@@ -52,8 +63,7 @@
                 <td class="text-center"><?php echo $row['unit'].' grams'; ?></td>
                 <td class="text-center"><?php echo $row['dateIn']; ?></td>                
                 <td class="text-center"><?php echo $row['createdBy']; ?></td>                
-                <td class="text-center"><?php echo $row['dateUpdated']; ?></td>                
-                <td class="text-center"><?php echo $row['updatedBy']; ?></td>                
+                <td class="text-center"><?php echo $row['dateUpdated']; ?></td>               
             </tr>
         <?php endwhile; ?>
     </tbody>

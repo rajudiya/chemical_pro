@@ -8,7 +8,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Inventory System</title>
+    <title>DEPARTMENT OF CHEMISTRY SAURASHTRA UNIVERSITY</title>
+    <link rel="icon" type="image/x-icon" href="/inventoryphp/organic/upload/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
@@ -17,6 +18,27 @@
     <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/myscript.js"></script>
+    <style type="text/css">
+.rotate {
+  animation: rotation 10s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+body{
+    background-image: url(/inventoryphp/organic/upload/back.jpg);
+    background-repeat: no-repeat;
+     -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
 </head>
 <body>
 <form action="data/data.php" method="get">
@@ -28,7 +50,7 @@
     <div class="row">
         <div class="contcustom">
             <span>
-                <img src="/inventoryphp/organic/upload/logo.png">
+                <img src="/inventoryphp/organic/upload/logo.png" class="rotate">
             </span>
             <h3>Chemistry Department Lab</h3>          
             <div>

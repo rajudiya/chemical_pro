@@ -5,6 +5,19 @@
     $datauser = new User_data();
 ?>
            
+<style type="text/css">
+.rotate {
+  animation: rotation 10s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+</style>
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -12,7 +25,7 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <img src="/inventoryphp/organic/upload/logo.png" height="90" align="left" >
+                        <img src="/inventoryphp/organic/upload/logo.png" class="rotate" height="90" align="left" >
                         <h1 class="page-header">
                             Users
                         </h1>

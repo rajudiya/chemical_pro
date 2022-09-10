@@ -8,7 +8,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Print Report</title>
+     <title>DEPARTMENT OF CHEMISTRY SAURASHTRA UNIVERSITY</title>
+    <link rel="icon" type="image/x-icon" href="/inventoryphp/organic/upload/logo.png">
     <style>
         .wrapper {
             margin-top:20px !important;            

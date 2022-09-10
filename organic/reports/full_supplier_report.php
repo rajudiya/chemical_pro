@@ -20,6 +20,19 @@ include('/var/www/html/inventoryphp/organic/data/db1.php');
             window.print();
        }
 </script> 
+<style type="text/css">
+.rotate {
+  animation: rotation 10s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+</style>
 <div>
     <img src="/inventoryphp/organic/upload/logo.png" height="90">
 </div>

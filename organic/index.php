@@ -13,6 +13,20 @@
     $countuser = mysqli_num_rows($r4);
     
 ?>
+<style type="text/css">
+    .rotate {
+  animation: rotation 10s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+</style>
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -20,7 +34,7 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <img src="/inventoryphp/organic/upload/logo.png" height="90" align="left" >
+                        <img src="/inventoryphp/organic/upload/logo.png" class="rotate" height="90" align="left" >
                         <h1 class="page-header">
                             Dashboard <small>Statistics Overview</small>
                         </h1>
@@ -33,28 +47,6 @@
                 </div>
                 <!-- /.row -->
                 <div class="row">
-                    <!-- <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-tint fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php //echo $countitem; ?></div>
-                                        <div>Items!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="items.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div> -->
                     
                     <div class="col-lg-4 col-md-6">
                         <div class="panel panel-green">
@@ -124,32 +116,9 @@
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- <div class="col-lg-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Logs</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="list-group">
-                                    <?php //while($row = mysqli_fetch_array($logs)): ?>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge"><?php //echo $row['date'];?></span>
-                                        <i class="fa fa-fw fa-calendar"></i>
-                                        <?php //echo $row['user'].' '.$row['operation']; ?>
-                                    </a>
-                                    <?php //endwhile; ?>
-                                </div>
-                                <div class="text-right">
-                                    <a href="reports.php">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
- -->
                     <div>
                         
-                        <img class="pull-left" src="/inventoryphp/organic/upload/dep.jpg" class="img-rounded" alt="Cinque Terre" width="175" height="150" style="align:right; padding-left: 12px; margin-bottom: 100px; overflow: hidden;">               
+                        <img class="pull-left" src="/inventoryphp/organic/upload/dep.jpg" class="img-rounded" alt="Cinque Terre" width="175" height="150" style="align:right; padding-left: 12px; margin-bottom: 180px; overflow: hidden;">               
                             <div class="col-xs-10">
                                 <h4 class="card-title"><b><u>DEPARTMENT OF CHEMISTRY</u></b></h4>
                                 <p class="card-text text-justify" style="font-size: 17px">Dear learned visitor, WaDescription: <a href="https://www.saurashtrauniversity.edu/university/academic-departments/department-of-chemistry">DEPARTMENT-OF-CHEMISTRY</a>. H S Joshi-2.jpgrm Greetings from the Department of chemistry, Saurashtra University Rajkot. Ours is one of the department established in 1979 on the main campus. It started as a single faculty department in the subject of chemistry to the students mainly coming from the rural background and impart necessary skills required for the grooming chemical industries in this western part of the country, for creating self-entrepreneurs and also churn out academicians and researchers who can take up jobs in educational institutes and research laboratories. With a small beginning, the path for progress and development was smooth and gradual.</p>
